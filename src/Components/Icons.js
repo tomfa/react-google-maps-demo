@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
@@ -37,19 +37,47 @@ const SpinnerSVGCircle = styled.circle`
   stroke: hsl(210, 70, 75);
   stroke-linecap: round;
 
-  ${SVG}:hover & {
-    animation: ${dash} 1.5s ease-in-out 1;
-  }
+  animation: ${dash} 1.5s ease-in-out;
+  animation-name: ${props => (props.spinning ? dash : "none")};
 `;
 
-export const Spinner = ({ size = 40, color = "white" }) => (
-  <SVG size={size}>
-    <SpinnerSVGCircle
-      cx="12"
-      cy="12"
-      r="10"
-      fill="none"
-      stroke={color}
-    ></SpinnerSVGCircle>
-  </SVG>
-);
+export const Spinner = ({ size = 40, color = "white" }) => {
+  const [activeTime, setActiveTime] = useState(null);
+  const activeTimeRef = useRef(activeTime);
+  activeTimeRef.current = activeTime;
+  const spinningTime = 2000;
+  const isSpinning = activeTime !== null;
+
+  const deactivate = () => {
+    const isAlreadyDeactivated = !activeTimeRef.current;
+    if (isAlreadyDeactivated) {
+      return;
+    }
+    const now = new Date();
+    const newerDeactivateTaskLoaded =
+      now - activeTimeRef.current < spinningTime;
+    if (newerDeactivateTaskLoaded) {
+      return;
+    }
+    setActiveTime(null);
+  };
+  const onClick = () => {
+    setActiveTime(new Date());
+    setTimeout(deactivate, spinningTime);
+  };
+
+  useEffect(onClick, []);
+
+  return (
+    <SVG size={size} onClick={onClick}>
+      <SpinnerSVGCircle
+        spinning={isSpinning}
+        cx="12"
+        cy="12"
+        r="10"
+        fill="none"
+        stroke={color}
+      ></SpinnerSVGCircle>
+    </SVG>
+  );
+};
