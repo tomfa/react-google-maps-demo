@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { compose, withProps } from "recompose";
 import {
   withScriptjs,
@@ -6,6 +6,8 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
+
+import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
 
 const defaultStyles = require("./styles.json");
 
@@ -31,17 +33,39 @@ export const MapComponent = compose(
     disableDefaultUI: true,
     zoom
   };
-  const options = Object.assign(
-    {},
-    defaultOptions,
-    props.options || {}
-  );
+  const options = Object.assign({}, defaultOptions, props.options || {});
+  const [map, setMap] = useState(null);
+  useEffect(() => {
+    if (!map) {
+      return;
+    }
+    map.panTo(props.panTo);
+  }, [props.panTo]);
 
   return (
-    <GoogleMap center={props.location} zoom={zoom} defaultOptions={options}>
-      {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} label="OST" />
-      )}
+    <GoogleMap
+      center={props.location}
+      zoom={zoom}
+      defaultOptions={options}
+      ref={el => setMap(el)}
+    >
+      {props.markers.map((marker, i) => {
+        if (marker.disabled) {
+          return null;
+        }
+        const icon = {
+          url:
+            "http://maps.google.com/mapfiles/ms/" +
+            `icons/${marker.color || "yellow"}-dot.png`
+        };
+        return (
+          <Marker
+            key={i}
+            position={marker.location}
+            icon={icon}
+          />
+        );
+      })}
     </GoogleMap>
   );
 });

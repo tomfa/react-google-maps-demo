@@ -16,16 +16,19 @@ const App = () => {
   const [stepNumber, setStepNumber] = useState(0);
   const [location, setLocation] = useState(initialLocation);
   const [zoom, setZoom] = useState(initialZoom);
+  const [markers, setMarkers] = useState([]);
 
   const activateStep = n => {
     if (steps.length > n) {
       const step = steps[n];
-      console.log(step)
       if (step.zoomLevel) {
         setZoom(step.zoomLevel);
       }
       if (step.mapCenter) {
         setLocation(step.mapCenter);
+      }
+      if (step.markers) {
+        setMarkers([...markers, ...step.markers]);
       }
     }
   };
@@ -34,7 +37,12 @@ const App = () => {
 
   return (
     <div>
-      <MapComponent location={location} zoom={zoom} />
+      <MapComponent
+        location={initialLocation}
+        panTo={location}
+        zoom={zoom}
+        markers={markers}
+      />
       <InfoDisplay currentStep={stepNumber} steps={texts} />
       <CornerButton onClick={() => setStepNumber(stepNumber + 1)} />
     </div>
