@@ -29,18 +29,16 @@ export const MapComponent = compose(
   const defaultOptions = {
     styles: defaultStyles,
     disableDefaultUI: true,
-    zoom,
-    minZoom: zoom,
-    maxZoom: zoom
+    zoom
   };
-  const options = Object.assign({}, defaultOptions, props.options || {});
+  const options = Object.assign(
+    {},
+    defaultOptions,
+    props.options || {}
+  );
 
   return (
-    <GoogleMap
-      defaultZoom={props.zoom}
-      defaultCenter={props.location}
-      defaultOptions={options}
-    >
+    <GoogleMap center={props.location} zoom={zoom} defaultOptions={options}>
       {props.isMarkerShown && (
         <Marker position={{ lat: -34.397, lng: 150.644 }} label="OST" />
       )}
