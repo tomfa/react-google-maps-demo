@@ -4,7 +4,7 @@ import { CornerButton } from "./Components/CornerButton";
 
 import "./App.css";
 
-import { MapComponent } from "./Components/GoogleMaps/MapComponent";
+import { Map } from "./Components/GoogleMaps/Map";
 import { InfoDisplay } from "./Components/InfoBox/InfoDisplay";
 
 import { initialLocation, initialZoom } from "./data/initialLocation";
@@ -37,9 +37,8 @@ const App = () => {
 
   return (
     <div>
-      <MapComponent
-        location={initialLocation}
-        panTo={location}
+      <Map
+        location={location}
         zoom={zoom}
         markers={markers}
       />
