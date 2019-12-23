@@ -4,10 +4,9 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
-
-import InfoBox from "react-google-maps/lib/components/addons/InfoBox";
 
 const defaultStyles = require("./styles.json");
 
@@ -34,6 +33,10 @@ export const MapComponent = compose(
     zoom
   };
   const options = Object.assign({}, defaultOptions, props.options || {});
+  const [openMarker, setOpenedMarker] = useState(-1);
+  const clickMarker = i => {
+    setOpenedMarker(openMarker === i ? -1 : i);
+  };
   const [map, setMap] = useState(null);
   useEffect(() => {
     if (!map) {
@@ -63,7 +66,14 @@ export const MapComponent = compose(
             key={i}
             position={marker.location}
             icon={icon}
-          />
+            onClick={() => clickMarker(i)}
+          >
+            {openMarker === i && (
+              <InfoWindow onCloseClick={() => clickMarker(i)}>
+                <span>{marker.label}</span>
+              </InfoWindow>
+            )}
+          </Marker>
         );
       })}
     </GoogleMap>
