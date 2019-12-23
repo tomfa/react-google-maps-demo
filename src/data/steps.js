@@ -7,8 +7,8 @@ const step = (text, { markers, zoomLevel, mapCenter } = {}) => ({
   markers: markers || []
 });
 
-const Link = ({ href, children }) => (
-  <a href={href} target="_blank">
+const Link = ({ href, children, blank = false } = {}) => (
+  <a href={href} target={blank ? "_blank" : ""}>
     {children}
   </a>
 );
@@ -16,12 +16,12 @@ const Link = ({ href, children }) => (
 export const steps = [
   step(
     <>
-      Du er invitert til Amsterdam.
+      I would like to invite you to Amsterdam.
       <br />
-      <small>klikk på sirkelen ➡️</small>
+      <small>click on the circle ➡️</small>
     </>
   ),
-  step("Flyet lander torsdag 16. januar, kl. 17:25.", {
+  step("The flight lands Thursday the 16th, at 17:25.", {
     mapCenter: { lat: 52.3105386, lng: 4.7660857 },
     zoomLevel: 13,
     markers: [
@@ -32,11 +32,11 @@ export const steps = [
     ]
   }),
 
-  step("...og letter mandag 20. januar, kl. 18:10", {
+  step("...og we'll stay until Monday the 20th, at 18:10.", {
     mapCenter: { lat: 52.3405386, lng: 4.8260857 },
     zoomLevel: 12
   }),
-  step("Vi skal bo på et billig, shabby, supersentralt hotel.", {
+  step("We're living at a cheap, shitty, super central hotel.", {
     zoomLevel: 13,
     mapCenter: { lat: 52.373706, lng: 4.890148 },
     markers: [
@@ -49,16 +49,16 @@ export const steps = [
   }),
   step(
     <>
-      Da bor vi nært det som skjer denne siste helgen av{" "}
-      <Link href="https://amsterdamlightfestival.com/en/">
-        Amsterdam lysfestival.
+      Which means that we live close to what happens this last weekend of{" "}
+      <Link href="https://amsterdamlightfestival.com/en/" blank>
+        Amsterdam Light Festival.
       </Link>
     </>,
     {
       mapCenter: { lat: 52.370706, lng: 4.900148 },
       markers: [
         {
-          label: "ARTIS Amsterdam Royal Zoo",
+          label: "Sleepwalking at ARTIS Zoo",
           location: { lat: 52.365889, lng: 4.916554 }
         },
         {
@@ -70,8 +70,11 @@ export const steps = [
   ),
   step(
     <>
-      Jeg gleder meg spesielt til å se{" "}
-      <Link href="https://www.skalar.art/">SKALAR</Link> på lørdag!
+      I'm especially looking forward Saturday: I got two tickets for the{" "}
+      <Link href="https://www.skalar.art/" blank>
+        SKALAR show
+      </Link>{" "}
+      !
     </>,
     {
       zoomLevel: 14,
@@ -84,7 +87,7 @@ export const steps = [
       ]
     }
   ),
-  step("Det er god mat og drikke i nærheten!", {
+  step("There is good food and drinks nearby.", {
     mapCenter: { lat: 52.373483, lng: 4.888163 },
     markers: [
       {
@@ -105,7 +108,7 @@ export const steps = [
       }
     ]
   }),
-  step("Og det er disco like ved!", {
+  step("And night clubs.", {
     markers: [
       {
         label: "The Smallest Disco in the World",
@@ -124,37 +127,16 @@ export const steps = [
       }
     ]
   }),
-  step("...kanskje også se noen shady steder?", {
-    markers: [
-      {
-        label: "Red light bar",
-        location: { lat: 52.3726666, lng: 4.8948655 },
-        color: "pink"
-      },
-      {
-        label: "Barneys Coffeshop",
-        location: { lat: 52.380627, lng: 4.8888053 },
-        color: "pink"
-      },
-      {
-        label: "Grey Area Coffeeshop",
-        location: { lat: 52.374665, lng: 4.8866712 },
-        color: "pink"
-      }
-    ]
-  }),
 
-  step("Så hva sier du? Vil du bli med?", {
+  step("So what do you say? Would you like to join?", {
     zoomLevel: 13,
     mapCenter: { lat: 52.373706, lng: 4.890148 }
   }),
   step(
     <>
-      <Link href="https://www.messenger.com/t/tomas.a.fagerbekk">
-        Send meg melding
-      </Link>{" "}
-      da vel!
+      Then{' '}
+      <Link href="tel:+4741767679">send me a message!</Link>
     </>
   ),
-  step("God jul 🎄")
+  step("Happy birthday 🎁")
 ];
