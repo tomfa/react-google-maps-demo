@@ -7,7 +7,7 @@ const Wrapper = styled.span`
   position: fixed;
   right: 15px;
   padding: 0;
-  bottom: 15px;
+  bottom: 20px;
   z-index: 10;
   width: 40px;
   height: 40px;
