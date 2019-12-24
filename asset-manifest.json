@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/hanna-19/static/css/main.bfd62860.chunk.css",
-    "main.js": "/hanna-19/static/js/main.ebab456b.chunk.js",
-    "main.js.map": "/hanna-19/static/js/main.ebab456b.chunk.js.map",
-    "runtime-main.js": "/hanna-19/static/js/runtime-main.821db44f.js",
-    "runtime-main.js.map": "/hanna-19/static/js/runtime-main.821db44f.js.map",
-    "static/js/2.5449d687.chunk.js": "/hanna-19/static/js/2.5449d687.chunk.js",
-    "static/js/2.5449d687.chunk.js.map": "/hanna-19/static/js/2.5449d687.chunk.js.map",
-    "index.html": "/hanna-19/index.html",
-    "precache-manifest.968c1bb39dbf0b426317e512671169cb.js": "/hanna-19/precache-manifest.968c1bb39dbf0b426317e512671169cb.js",
-    "service-worker.js": "/hanna-19/service-worker.js",
-    "static/css/main.bfd62860.chunk.css.map": "/hanna-19/static/css/main.bfd62860.chunk.css.map",
-    "static/js/2.5449d687.chunk.js.LICENSE": "/hanna-19/static/js/2.5449d687.chunk.js.LICENSE"
+    "main.css": "/react-google-maps-demo/static/css/main.bfd62860.chunk.css",
+    "main.js": "/react-google-maps-demo/static/js/main.c1736291.chunk.js",
+    "main.js.map": "/react-google-maps-demo/static/js/main.c1736291.chunk.js.map",
+    "runtime-main.js": "/react-google-maps-demo/static/js/runtime-main.28aff570.js",
+    "runtime-main.js.map": "/react-google-maps-demo/static/js/runtime-main.28aff570.js.map",
+    "static/js/2.e6e6b7d1.chunk.js": "/react-google-maps-demo/static/js/2.e6e6b7d1.chunk.js",
+    "static/js/2.e6e6b7d1.chunk.js.map": "/react-google-maps-demo/static/js/2.e6e6b7d1.chunk.js.map",
+    "index.html": "/react-google-maps-demo/index.html",
+    "precache-manifest.b28273c6e7ea209fc9e7f9aad4538dad.js": "/react-google-maps-demo/precache-manifest.b28273c6e7ea209fc9e7f9aad4538dad.js",
+    "service-worker.js": "/react-google-maps-demo/service-worker.js",
+    "static/css/main.bfd62860.chunk.css.map": "/react-google-maps-demo/static/css/main.bfd62860.chunk.css.map",
+    "static/js/2.e6e6b7d1.chunk.js.LICENSE": "/react-google-maps-demo/static/js/2.e6e6b7d1.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.821db44f.js",
-    "static/js/2.5449d687.chunk.js",
+    "static/js/runtime-main.28aff570.js",
+    "static/js/2.e6e6b7d1.chunk.js",
     "static/css/main.bfd62860.chunk.css",
-    "static/js/main.ebab456b.chunk.js"
+    "static/js/main.c1736291.chunk.js"
   ]
 }
